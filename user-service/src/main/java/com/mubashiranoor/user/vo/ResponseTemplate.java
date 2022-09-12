@@ -1,6 +1,6 @@
 package com.mubashiranoor.user.vo;
 
-import com.mubashiranoor.user.entity.User;
+import com.mubashiranoor.user.entity.UserAccount;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResponseTemplate {
-    private User user;
+    private UserAccount userAccount;
     private Department department;
 }

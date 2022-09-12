@@ -1,6 +1,6 @@
 package com.mubashiranoor.user.service;
 
-import com.mubashiranoor.user.entity.User;
+import com.mubashiranoor.user.entity.UserAccount;
 import com.mubashiranoor.user.repository.UserRepository;
 import com.mubashiranoor.user.vo.Department;
 import com.mubashiranoor.user.vo.ResponseTemplate;
@@ -18,20 +18,20 @@ public class UserService {
 
     @Autowired
     private RestTemplate restTemplate;
-    public User saveUser(User user) {
+    public UserAccount saveUser(UserAccount user) {
         return userRepository.save(user);
     }
 
 
-    public User getUserById(Long id) {
+    public UserAccount getUserById(Long id) {
         return userRepository.getUserByUserId(id);
     }
 
     public ResponseTemplate getUserWithDepartment(Long id) {
         ResponseTemplate responseTemplate = new ResponseTemplate();
-        User user = getUserById(id);
+        UserAccount user = getUserById(id);
         Department department = restTemplate.getForObject("http://localhost:9091/departments/"+user.getDepartmentId(),Department.class);
-        responseTemplate.setUser(user);
+        responseTemplate.setUserAccount(user);
         responseTemplate.setDepartment(department);
         return responseTemplate;
 
